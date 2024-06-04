@@ -1,17 +1,37 @@
 import streamlit as st
 
+
 def clear_input_field():
+    """
+    save user's input to session state and clear test input holding the user's input
+    """
     st.session_state.user_question = st.session_state.user_input
     st.session_state.user_input =""
 
 def send_input_changed():
+    """
+    set send input session state to true and call clear input field function
+    """
     st.session_state.send_input = True
     clear_input_field()
+    
+def set_sidebar(streamlit_object):
+    """
+    function to setup sidebar to allow upload of audio, image and pdf
+    """
+    upload_audio = streamlit_object.sidebar.file_uploader("Upload audio", type=["wav", "mp3"])
+    upload_image = streamlit_object.sidebar.file_uploader("Upload image",  type=["jpg", "jpeg", "png"])
+    upload_pdf = streamlit_object.sidebar.file_uploader("Upload pdf file", type=["pdf"])
+
+    return (upload_audio, upload_image, upload_pdf)
     
 
 def main():
     st.title("Multimodal Chat Application")
     chat_container = st.container()
+
+    #  call function to set side bar and return media objects
+    uploaded_audio, uploaded_image, uploaded_pdf = set_sidebar(st)
 
     if "send_input" not in st.session_state:
         st.session_state.send_input = False
