@@ -1,5 +1,9 @@
 ## MultiModal AI Chat Application
 
+A short while ago, I helped a friend who works in a bank prepare for her exams. I decided to build a chat application that allows her or other users to upload PDF files to an LLM and then converse and ask questions about the content of the PDF from LLM. Users would also be able to have audio conversations with the LLMs.
+
+I am taking inspiration from Leon Sander's youtube tutorial for the application.
+
 ### Requirements
 
 - [Python](https://www.python.org/) is a high-level, general-purpose programming language. Its design philosophy emphasizes code readability with the use of significant indentation.
